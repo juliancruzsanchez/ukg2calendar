@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         UKG 2 ICS
+// @name         UKG Calendar Exporter
 // @namespace    http://tampermonkey.net/
 // @version      2025-03-24
 // @description  Export UKG to a ICS file for uploading to Calendar apps.
