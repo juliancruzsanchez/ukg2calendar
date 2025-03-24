@@ -40,6 +40,7 @@
                     icsContent += `BEGIN:VEVENT
 UID:${formatDateForIcs(day.date, shift.startTime)}-4206969@example.com
 SUMMARY:Work Shift [${shift.duration}]
+TRANSP:TRANSPARENT
 DTSTAMP:${formatDateForIcs(formattedDate, "12:00AM")}
 DTSTART:${formatDateForIcs(day.date, shift.startTime)}
 DTEND:${formatDateForIcs(day.date, shift.endTime)}
