@@ -154,7 +154,7 @@ END:VEVENT
             })
         }
         else if (window.location.href.includes('/myschedule')) {
-            Swal.fire("Press Print > Preview to Download to Calendar")
+            Swal.fire({title:"Press Print > Choose Timeframe > Preview to Download to Calendar", html: "<span>For first use do multiple exports for each timeframe: current schedule period, then all of the next periods available.<br><br>Otherwise just do the newly published schedule to prevent duplication.</span>"})
         }
     })
 
