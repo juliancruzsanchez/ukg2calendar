@@ -1,0 +1,104 @@
+body,
+html {
+  min-height: 400px;
+  min-width: 300px;
+  margin: 0;
+  padding: 0;
+  border: oklch(0.511 0.096 186.391) solid 1px;
+}
+
+.center-div {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.setting {
+  display: grid;
+  box-shadow: 0px 0px 12px #0000004f;
+  border: #000 solid 1px;
+  background: #ebebeb;
+  border-radius: 40px;
+  margin-bottom: 8px;
+}
+
+.setting-toggle {
+  grid-template-columns: 1fr auto;
+  padding: 8px 20px;
+}
+
+.setting-toggle .setting-label {
+  line-height: 30px;
+}
+
+.setting-text {
+  display: block;
+  position: relative;
+}
+
+.setting-text .setting-label {
+  position: absolute;
+  margin: 0px 20px;
+  font-size: 8px;
+}
+
+.setting-text input {
+  padding: 10px 0px;
+  width: calc(100% - 40px);
+  display: block;
+  margin: 0px 20px;
+}
+
+.big-label {
+  margin-bottom: 5px;
+}
+
+.saved-address {
+  display: grid;
+  padding: 0px 20px;
+  grid-template-columns: auto 1fr;
+  box-shadow: 0px 0px 12px #0000004f;
+  border: #000 solid 1px;
+  border-radius: 40px;
+  margin-bottom: 8px;
+  background: #ebebeb;
+}
+
+.saved-address-text {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding-right: 10px;
+}
+
+.saved-address-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.saved-address-actions span {
+  line-height: 38px;
+}
+
+.ukgEntry {
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mapsAddress {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#defaultAddressSave {
+  display: none;
+}

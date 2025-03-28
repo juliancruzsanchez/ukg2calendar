@@ -29,7 +29,7 @@ This guide explains how to install the UKG Calendar Exporter extension on Chrome
 
 5. **Load the Unpacked Extension:**
    - Click the "Load unpacked" button that appears when Developer Mode is enabled.
-   - In the file dialog, navigate to the directory where you extracted the extension's source code, go into `chromium/src` and select that folder.
+   - In the file dialog, navigate to the directory where you extracted the extension's source code, go into `global/src` and select that folder.
 
 6. **Confirmation:**
    - The UKG Calendar Exporter extension should now be installed and visible on your extensions page.

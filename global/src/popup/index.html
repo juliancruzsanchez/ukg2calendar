@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UKG to Calendar</title>
+    <script src="../vendor/tailwinds.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="toggle.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="mx-3 mt-2 center-div rounded-xl bg-teal-700 text-white p-3">
+            <span class="font-bold text-xl">UKG to Calendar</span>
+            <span>Exports UKG Schedule to an importable .ics file.</span>
+        </div>
+        <div class="settings">
+            <div class="big-label center-div font-bold">
+                <h1>Event Settings</h1>
+            </div>
+            <div class="setting setting-toggle">
+                <span class="setting-label">Show as busy</span>
+                <div class="setting-control"><label class="switch">
+                        <input id="busy" type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="setting setting-toggle">
+                <span class="setting-label">45/30/15 reminders</span>
+                <div class="setting-control"><label class="switch">
+                        <input id="reminders" type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="big-label center-div font-bold">
+                <h1>Default Address</h1>
+            </div>
+            <div class="setting setting-text">
+                <div class="setting-input">
+                    <input type="text" id="defaultAddress" placeholder="Default Address">
+                </div>
+            </div>
+            <button id="defaultAddressSave">Save</button>
+            <div class="big-label center-div font-bold">
+                <h1>Saved Addresses</h1>
+            </div>
+            <div id="savedAddresses"></div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
