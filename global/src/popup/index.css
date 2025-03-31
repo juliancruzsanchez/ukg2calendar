@@ -100,5 +100,8 @@ html {
 }
 
 #defaultAddressSave {
+  width: 100%;
+  text-align: center;
   display: none;
+  margin: 10px 0;
 }

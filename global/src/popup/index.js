@@ -36,7 +36,9 @@ function defaultAddressHandler() {
     })
 
     button.addEventListener("click", () => {
-        setSetting()
+        setSetting("defaultAddress", textField.value)
+        button.innerText = "Saved!"
+        setTimeout(() => button.style.display = 'hidden', 1000)
     })
 }
 
@@ -73,11 +75,17 @@ function createSavedAddressElement(location) {
     const editSpan = document.createElement("span");
     editSpan.classList.add("edit-icon");
     editSpan.textContent = "✏️";
+    editSpan.addEventListener("click", () => {
+
+    })
 
     // Create a span for the delete icon (trash can)
     const deleteSpan = document.createElement("span");
     deleteSpan.classList.add("delete-icon");
     deleteSpan.textContent = "🗑️";
+    deleteSpan.addEventListener("click", () => {
+
+    })
 
     // Append the icons to the actionsDiv
     actionsDiv.appendChild(editSpan);
@@ -94,12 +102,16 @@ async function displaySettings() {
     /** Reminders */
     window.document.getElementById("reminders").checked = await getSetting("reminders");
 
+    /** Default Address */
+    window.document.getElementById("defaultAddress").value = await getSetting("defaultAddress")
+
     /** Saved Addresses */
     const savedAddressesContainer = document.getElementById("savedAddresses");
     const transferLocations = await getSetting("transferLocations");
 
     if (transferLocations && Array.isArray(transferLocations)) {
         transferLocations.forEach(location => {
+            console.log(location)
             const savedAddressElement = createSavedAddressElement(location);
             savedAddressesContainer.appendChild(savedAddressElement);
         });
@@ -109,6 +121,6 @@ async function displaySettings() {
 window.addEventListener("load", () => {
     settingToggleHandler("busy")
     settingToggleHandler("reminders")
-    defaultAddressHandler()
     displaySettings();
+    defaultAddressHandler()
 })
