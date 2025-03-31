@@ -103,7 +103,7 @@ async function displaySettings() {
     window.document.getElementById("reminders").checked = await getSetting("reminders");
 
     /** Default Address */
-    window.document.getElementById("defaultAddress").value = await getSetting("defaultAddress")
+    window.document.getElementById("defaultAddress").value = await getSetting("defaultAddress") || ""
 
     /** Saved Addresses */
     const savedAddressesContainer = document.getElementById("savedAddresses");
