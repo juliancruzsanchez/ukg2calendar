@@ -99,6 +99,27 @@ html {
   text-overflow: ellipsis;
 }
 
+.addressEdit {
+  display: none;
+}
+
+.saved-address.editing {
+  grid-template-columns: 1fr;
+}
+
+.saved-address.editing .addressEdit {
+  display: block;
+}
+
+.saved-address.editing .saved-address-actions {
+  display: none;
+}
+
+.saved-address.editing .mapsAddress {
+  display: none;
+}
+
+
 #defaultAddressSave {
   width: 100%;
   text-align: center;

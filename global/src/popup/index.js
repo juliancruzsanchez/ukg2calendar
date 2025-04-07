@@ -22,103 +22,117 @@ function getSetting(setting) {
 }
 
 function settingToggleHandler(setting) {
-    window.document.getElementById(setting).addEventListener("click", (e) => {
+    window.document.getElementById(setting).on("click", (e) => {
         setSetting(setting, e.target.checked)
     })
 }
 
 function defaultAddressHandler() {
-    const textField = window.document.getElementById("defaultAddress")
-    const button = window.document.getElementById("defaultAddressSave")
+    const textField = $("#defaultAddress")
+    const button = $("#defaultAddressSave")
     button.style.display = 'hidden'
-    textField.addEventListener("input", () => {
+    textField.on("input", () => {
         button.style.display = 'block'
     })
 
-    button.addEventListener("click", () => {
+    button.on("click", () => {
         setSetting("defaultAddress", textField.value)
-        button.innerText = "Saved!"
+        button.text = "Saved!"
         setTimeout(() => button.style.display = 'hidden', 1000)
     })
 }
 
 function createSavedAddressElement(location) {
-    const savedAddressDiv = document.createElement("div");
-    savedAddressDiv.classList.add("saved-address");
+    const savedAddressDiv = document.createElem("div");
+    savedAddressDiv.attr("class", "saved-address");
 
     // Create the div for the text content
-    const savedAddressTextDiv = document.createElement("div");
-    savedAddressTextDiv.classList.add("saved-address-text");
+    const savedAddressTextDiv = document.createElem("div");
+    savedAddressTextDiv.attr("class", "saved-address-text");
 
-    const ukgEntryDiv = document.createElement("div");
-    ukgEntryDiv.classList.add("ukgEntry");
+    const ukgEntryDiv = document.createElem("div");
+    ukgEntryDiv.attr("class", "ukgEntry");
     ukgEntryDiv.textContent = location.ukgEntry;
 
-    const mapsAddressDiv = document.createElement("div");
-    mapsAddressDiv.classList.add("mapsAddress");
+    const mapsAddressDiv = document.createElem("div");
+    mapsAddressDiv.attr("class", "mapsAddress");
     mapsAddressDiv.textContent = location.mapsAddress;
 
+    const mapsAddressEditDiv = document.createElem("input");
+    mapsAddressEditDiv.attr("class", "addressEdit")
+    mapsAddressEditDiv.attr("placeholder", "Enter address...")
+    mapsAddressEditDiv.value = location.mapsAddress;
+
     // Append the ukgEntry and mapsAddress to the saved-address-text div
-    savedAddressTextDiv.appendChild(ukgEntryDiv);
-    savedAddressTextDiv.appendChild(mapsAddressDiv);
+    savedAddressTextDiv.append(ukgEntryDiv);
+    savedAddressTextDiv.append(mapsAddressDiv);
+    savedAddressTextDiv.append(mapsAddressEditDiv);
 
     // Append the saved-address-text div to the main saved-address div
-    savedAddressDiv.appendChild(savedAddressTextDiv);
+    savedAddressDiv.append(savedAddressTextDiv);
+
+    /**
+     * -- BUTTONS --
+     */
+
+    // TODO: Add save icon
 
 
     // Create a div for the icons
-    const actionsDiv = document.createElement("div");
-    actionsDiv.classList.add("saved-address-actions");
+    const actionsDiv = document.createElem("div");
+    actionsDiv.attr("class", "saved-address-actions");
     actionsDiv.id = "saved-address-actions";
 
     // Create a span for the edit icon (pencil)
-    const editSpan = document.createElement("span");
-    editSpan.classList.add("edit-icon");
+    const editSpan = document.createElem("span");
+    editSpan.attr("class", "edit-icon");
     editSpan.textContent = "✏️";
-    editSpan.addEventListener("click", () => {
-
+    editSpan.on("click", () => {
+        savedAddressDiv.attr("class", "saved-address editing")
     })
 
     // Create a span for the delete icon (trash can)
-    const deleteSpan = document.createElement("span");
-    deleteSpan.classList.add("delete-icon");
+    const deleteSpan = document.createElem("span");
+    deleteSpan.attr("class", "delete-icon");
     deleteSpan.textContent = "🗑️";
-    deleteSpan.addEventListener("click", () => {
+
+    // TODO: Add delete code
+    deleteSpan.on("click", () => {
 
     })
 
     // Append the icons to the actionsDiv
-    actionsDiv.appendChild(editSpan);
-    actionsDiv.appendChild(deleteSpan);
-    savedAddressDiv.appendChild(actionsDiv);
+    actionsDiv.append(editSpan);
+    actionsDiv.append(deleteSpan);
+    savedAddressDiv.append(actionsDiv);
 
     return savedAddressDiv;
 }
 
 async function displaySettings() {
     /** Busy Status */
-    window.document.getElementById("busy").checked = await getSetting("busy");
+    $("#busy").checked = await getSetting("busy");
 
     /** Reminders */
-    window.document.getElementById("reminders").checked = await getSetting("reminders");
+    $("#reminders").checked = await getSetting("reminders");
 
     /** Default Address */
-    window.document.getElementById("defaultAddress").value = await getSetting("defaultAddress") || ""
+    $("#defaultAddress").value = await getSetting("defaultAddress") || ""
 
     /** Saved Addresses */
-    const savedAddressesContainer = document.getElementById("savedAddresses");
+    const savedAddressesContainer = $("#savedAddresses");
     const transferLocations = await getSetting("transferLocations");
 
     if (transferLocations && Array.isArray(transferLocations)) {
         transferLocations.forEach(location => {
             console.log(location)
             const savedAddressElement = createSavedAddressElement(location);
-            savedAddressesContainer.appendChild(savedAddressElement);
+            savedAddressesContainer.append(savedAddressElement);
         });
     }
 }
 
-window.addEventListener("load", () => {
+window.on("load", () => {
     settingToggleHandler("busy")
     settingToggleHandler("reminders")
     displaySettings();

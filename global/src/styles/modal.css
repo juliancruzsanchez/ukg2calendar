@@ -1,0 +1,17 @@
+.addyModal {
+    background: #000000c0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.addyModal-content {
+    background: #FFF;
+    border-radius: 30px;
+}

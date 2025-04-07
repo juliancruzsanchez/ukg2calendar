@@ -57,7 +57,7 @@ HTMLElement.prototype.removeAttr = function (key) {
     return this
 }
 
-HTMLElement.prototype.has = function(attribute) {
+HTMLElement.prototype.has = function (attribute) {
     return this.hasAttribute(attribute)
 }
 
@@ -97,6 +97,11 @@ HTMLElement.prototype.parent = function () {
     return this.parentElement
 }
 
+Window.prototype.on = function (event, callback, options) {
+    this.addEventListener(event, callback, options)
+    return this
+}
+
 HTMLElement.prototype.on = function (event, callback, options) {
     this.addEventListener(event, callback, options)
     return this
@@ -108,7 +113,7 @@ HTMLElement.prototype.off = function (event, callback, options) {
 }
 
 HTMLElement.prototype.emit = function (event, args = null) {
-    this.dispatchEvent(event, new CustomEvent(event, {detail: args }))
+    this.dispatchEvent(event, new CustomEvent(event, { detail: args }))
     return this
 }
 // nieuw!todo: testen
@@ -123,6 +128,10 @@ HTMLElement.prototype.data = function (key, value) {
     return this
 }
 
-HTMLElement.prototype.remove = function() {
+HTMLElement.prototype.remove = function () {
     this.parentNode.removeChild(this)
+}
+
+Document.prototype.createElem = function (x) {
+    return this.createElement(x);
 }
