@@ -48,7 +48,7 @@ function generateIcsForShifts(days) {
             const newContent = `BEGIN:VEVENT
 UID:${ics.formatDate(day.date, shift.startTime)}-4206969@example.com
 SUMMARY:Work Shift [${shift.duration}]
-${busy ? 'TRANSP:TRANSPARENT' : ''}
+${!busy ? 'TRANSP:TRANSPARENT' : ''}
 DTSTAMP:${ics.formatDate(formattedDate, "12:00AM")}
 DTSTART:${ics.formatDate(day.date, shift.startTime)}
 DTEND:${ics.formatDate(day.date, shift.endTime)}
@@ -84,7 +84,7 @@ function getAddressForShift(shift) {
       const foundLocation = transferLocations.find(location => location.ukgEntry === shift.orgpath);
 
       if (foundLocation) {
-        res(foundLocation.mapsAddress);
+        res(foundLocation.address);
       } else {
         promptForNewAddress(shift.orgpath).then(address => {
           console.log("Resolved:", address)
@@ -108,7 +108,7 @@ function promptForNewAddress(orgpath) {
       console.log(promptedsOrgPaths)
       settings.get("transferLocations").then(tL => {
         console.log(tL)
-        if (tL.length > 0) res(tL.find(location => location.ukgEntry === shift.orgpath).mapsAddress);
+        if (tL.length > 0) res(tL.find(location => location.ukgEntry === shift.orgpath).address);
         else rej("Not Valid!")
       })
     });
@@ -118,7 +118,7 @@ function promptForNewAddress(orgpath) {
       const modal = document.createElement('div');
       modal.id = 'customprompt' + orgpath.replaceAll('/', '_');
       modal.className = 'addyModal';
-      modal.style.display = 'block';
+      modal.style.display = 'flex';
       const modalContent = document.createElement('div');
       modalContent.className = 'addyModal-content';
       const closespan = document.createElement('span');
@@ -140,7 +140,7 @@ function promptForNewAddress(orgpath) {
           const transferLocations = [...tL];
           const newLocation = {
             ukgEntry: orgpath,
-            mapsAddress: address
+            address: address
           };
           transferLocations.push(newLocation);
           settings.set("transferLocations", transferLocations).then(() => {
@@ -155,17 +155,13 @@ function promptForNewAddress(orgpath) {
       closespan.onclick = () => {
         modal.style.display = 'none';
       };
-      modalContent.appendChild(closespan);
       modalContent.appendChild(promptparagraph);
       modalContent.appendChild(userlnput);
       modalContent.appendChild(submitBtn);
+      modalContent.appendChild(closespan);
+
       modal.appendChild(modalContent);
       document.body.appendChild(modal);
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = 'none';
-        }
-      };
       promptedsOrgPaths[orgpath] = true; // Mark this orgpath as answered
     });
   }
