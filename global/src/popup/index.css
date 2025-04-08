@@ -82,7 +82,8 @@ html {
   grid-template-columns: 1fr 1fr;
 }
 
-.saved-address-actions span {
+/** Icon */
+.icon {
   line-height: 38px;
 }
 
@@ -93,18 +94,16 @@ html {
   text-overflow: ellipsis;
 }
 
-.mapsAddress {
+.address {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/** Editing Saved Address */
+
 .addressEdit {
   display: none;
-}
-
-.saved-address.editing {
-  grid-template-columns: 1fr;
 }
 
 .saved-address.editing .addressEdit {
@@ -112,13 +111,30 @@ html {
 }
 
 .saved-address.editing .saved-address-actions {
+  grid-template-columns: 1fr;
+}
+
+.saved-address .save-icon {
   display: none;
 }
 
-.saved-address.editing .mapsAddress {
+.saved-address.editing .edit-icon,
+.saved-address.editing .delete-icon {
   display: none;
 }
 
+.saved-address.editing .save-icon {
+  display: block;
+  text-align: center;
+}
+
+.saved-address.editing .address {
+  display: none;
+}
+
+.address-placeholder {
+  text-align: center;
+}
 
 #defaultAddressSave {
   width: 100%;
