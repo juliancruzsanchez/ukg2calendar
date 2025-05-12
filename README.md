@@ -33,29 +33,3 @@ This guide explains how to install the UKG Calendar Exporter extension on Chrome
 
 6. **Confirmation:**
    - The UKG Calendar Exporter extension should now be installed and visible on your extensions page.
-
-## Installing and Importing Scripts to Tampermonkey
-
-Tampermonkey is a userscript manager that lets you run custom JavaScript code on websites. This section guides you on installing Tampermonkey and importing scripts.
-
-### Steps
-
-1. **Install Tampermonkey:**
-   - Go to the Tampermonkey website: [https://www.tampermonkey.net/](https://www.tampermonkey.net/)
-   - Click the "Download" button for your specific browser (Chrome, Edge, Firefox, etc.)
-   - Follow the on-screen instructions to install the Tampermonkey extension.
-
-2. **Import a Userscript:**
-   - **Method 1: Using a URL:**
-     - Copy the userscript file link: [https://raw.githubusercontent.com/juliancruzsanchez/ukg2calendar/refs/heads/main/tampermonkey/ukg2calendar.js](https://raw.githubusercontent.com/juliancruzsanchez/ukg2calendar/refs/heads/main/tampermonkey/ukg2calendar.js)
-     - Open Tampermonkey's dashboard (usually by clicking the Tampermonkey icon in your browser).
-     - Click the "Utilities" tab to import a new script.
-     - Paste the userscript URL into the Import from URL field that appears and press Install.
-     - Review the script and click "Install" to add it to Tampermonkey.
-   - **Method 2: From a Local File:**
-     - Download the source code for the extension from [the repository](https://github.com/juliancruzsanchez/ukg2calendar). You can do this by clicking the "Code" button and selecting "Download ZIP".
-     - Locate the file `./tampermonkey/ukg2calendar.js`
-     - Open Tampermonkey's dashboard (usually by clicking the Tampermonkey icon in your browser).
-     - Click the "Utilities" tab to import a new script.
-     - Choose the file by clicking the Import File button that appears.
-     - Review the script and click "Install" to add it to Tampermonkey.
